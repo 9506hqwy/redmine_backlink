@@ -1,0 +1,155 @@
+# to document:1
+inner_link_relations_001:
+  from_type: Document
+  from_id: 2
+  to_type: Document
+  to_id: 1
+inner_link_relations_002:
+  from_type: Issue
+  from_id: 2
+  to_type: Document
+  to_id: 1
+inner_link_relations_003:
+  from_type: Journal
+  from_id: 3
+  to_type: Document
+  to_id: 1
+inner_link_relations_004:
+  from_type: Message
+  from_id: 1
+  to_type: Document
+  to_id: 1
+inner_link_relations_005:
+  from_type: News
+  from_id: 1
+  to_type: Document
+  to_id: 1
+inner_link_relations_006:
+  from_type: WikiContent
+  from_id: 1
+  to_type: Document
+  to_id: 1
+# to issue:1
+inner_link_relations_007:
+  from_type: Document
+  from_id: 1
+  to_type: Issue
+  to_id: 1
+inner_link_relations_008:
+  from_type: Issue
+  from_id: 2
+  to_type: Issue
+  to_id: 1
+inner_link_relations_009:
+  from_type: Journal
+  from_id: 3
+  to_type: Issue
+  to_id: 1
+inner_link_relations_010:
+  from_type: Message
+  from_id: 1
+  to_type: Issue
+  to_id: 1
+inner_link_relations_011:
+  from_type: News
+  from_id: 1
+  to_type: Issue
+  to_id: 1
+inner_link_relations_012:
+  from_type: WikiContent
+  from_id: 1
+  to_type: Issue
+  to_id: 1
+# to message:1
+inner_link_relations_013:
+  from_type: Document
+  from_id: 1
+  to_type: Message
+  to_id: 1
+inner_link_relations_014:
+  from_type: Issue
+  from_id: 2
+  to_type: Message
+  to_id: 1
+inner_link_relations_015:
+  from_type: Journal
+  from_id: 3
+  to_type: Message
+  to_id: 1
+inner_link_relations_016:
+  from_type: Message
+  from_id: 4
+  to_type: Message
+  to_id: 1
+inner_link_relations_017:
+  from_type: News
+  from_id: 1
+  to_type: Message
+  to_id: 1
+inner_link_relations_018:
+  from_type: WikiContent
+  from_id: 1
+  to_type: Message
+  to_id: 1
+# to news:1
+inner_link_relations_019:
+  from_type: Document
+  from_id: 1
+  to_type: News
+  to_id: 1
+inner_link_relations_020:
+  from_type: Issue
+  from_id: 2
+  to_type: News
+  to_id: 1
+inner_link_relations_021:
+  from_type: Journal
+  from_id: 3
+  to_type: News
+  to_id: 1
+inner_link_relations_022:
+  from_type: Message
+  from_id: 1
+  to_type: News
+  to_id: 1
+inner_link_relations_023:
+  from_type: News
+  from_id: 2
+  to_type: News
+  to_id: 1
+inner_link_relations_024:
+  from_type: WikiContent
+  from_id: 1
+  to_type: News
+  to_id: 1
+# to wiki_content:1
+inner_link_relations_025:
+  from_type: Document
+  from_id: 1
+  to_type: WikiContent
+  to_id: 1
+inner_link_relations_026:
+  from_type: Issue
+  from_id: 2
+  to_type: WikiContent
+  to_id: 1
+inner_link_relations_027:
+  from_type: Journal
+  from_id: 3
+  to_type: WikiContent
+  to_id: 1
+inner_link_relations_028:
+  from_type: Message
+  from_id: 1
+  to_type: WikiContent
+  to_id: 1
+inner_link_relations_029:
+  from_type: News
+  from_id: 1
+  to_type: WikiContent
+  to_id: 1
+inner_link_relations_030:
+  from_type: WikiContent
+  from_id: 2
+  to_type: WikiContent
+  to_id: 1

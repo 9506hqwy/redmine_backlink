@@ -1,0 +1,40 @@
+<!-- Wiki サイドバー表示 -->
+<%
+   if @page.present? &&
+      @page.content.present? &&
+      @page.content.back_links.any?
+
+   content = @page.content
+   documents = content.backlink_by_type('Document')
+   issues = content.backlink_by_type('Issue')
+   journals = content.backlink_by_type('Journal')
+   messages = content.backlink_by_type('Message')
+   news = content.backlink_by_type('News')
+   wikis = content.backlink_by_type('WikiContent')
+%>
+
+<%= stylesheet_link_tag("backlink", plugin: "redmine_backlink") %>
+
+<h3><%= l(:label_reference_source) %></h3>
+
+<div>
+  <ul>
+    <li>
+      <%= render 'backlink/backlink_field', title: :label_document, links: documents, short: true %>
+    </li>
+    <li>
+      <%= render 'backlink/backlink_field', title: :label_issue, links: issues, sublinks: journals, short: true %>
+    </li>
+    <li>
+      <%= render 'backlink/backlink_field', title: :label_board, sublinks: messages, short: true %>
+    </li>
+    <li>
+      <%= render 'backlink/backlink_field', title: :label_news, links: news, short: true %>
+    </li>
+    <li>
+      <%= render 'backlink/backlink_field', title: :label_wiki, links: wikis, short: true %>
+    </li>
+  </ul>
+</div>
+
+<% end %> <!-- if -->

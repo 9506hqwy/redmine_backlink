@@ -1,0 +1,29 @@
+<%
+   title = local_assigns[:title]
+   links = local_assigns[:links] || []
+   sublinks = local_assigns[:sublinks] || []
+   short = local_assigns[:short] || false
+
+   if links.any? || sublinks.any?
+%>
+
+<%= l(title) if title %>
+<ul>
+  <% backlink_each(links, sublinks) do |link, anchor, children| %>
+  <li class="backlink-item">
+    <%= backlink_link_to(link, short, anchor) %>
+
+    <% unless short %>
+      <% if author = backlink_link_to_author(link) %>
+        (<%= author %>)
+      <% end %>
+    <% end %>
+
+    <% if children.any? %>
+      <%= render 'backlink/backlink_field', title: nil, links: children, short: short %>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+
+<% end %>

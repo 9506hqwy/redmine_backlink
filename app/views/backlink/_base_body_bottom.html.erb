@@ -1,0 +1,121 @@
+<!-- 文章/フォーラム/ニュース表示 -->
+<%
+   if controller.present? &&
+      controller.class.name == 'DocumentsController' &&
+      controller.action_name == 'show'
+      linkable = @document
+   end
+
+   if controller.present? &&
+      controller.class.name == 'MessagesController' &&
+      controller.action_name == 'show'
+      linkable = @message
+   end
+
+   if controller.present? &&
+      controller.class.name == 'NewsController' &&
+      controller.action_name == 'show'
+      linkable = @news
+   end
+
+   if linkable &&
+      linkable.back_links.any?
+
+   documents = linkable.backlink_by_type('Document')
+   issues = linkable.backlink_by_type('Issue')
+   journals = linkable.backlink_by_type('Journal')
+   messages = linkable.backlink_by_type('Message')
+   news = linkable.backlink_by_type('News')
+   wikis = linkable.backlink_by_type('WikiContent')
+%>
+
+<div id="backlink">
+  <h3><%= l(:label_reference_source) %></h3>
+
+  <div>
+    <ul style="padding-left: 0em; list-style-type: none">
+      <li>
+        <%= render 'backlink/backlink_field', title: :label_document, links: documents %>
+      </li>
+      <li>
+        <%= render 'backlink/backlink_field', title: :label_issue, links: issues, sublinks: journals %>
+      </li>
+      <li>
+        <%= render 'backlink/backlink_field', title: :label_board, sublinks: messages %>
+      </li>
+      <li>
+        <%= render 'backlink/backlink_field', title: :label_news, links: news %>
+      </li>
+      <li>
+        <%= render 'backlink/backlink_field', title: :label_wiki, links: wikis %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    let content = document.getElementById('content');
+    let backlink = document.getElementById('backlink');
+    content.appendChild(backlink);
+  });
+</script>
+
+<% end %> <!-- if -->
+
+<%
+   linkable = nil
+
+   if controller.present? &&
+      controller.class.name == 'WikiController' &&
+      controller.action_name == 'show'
+      linkable = @content
+   end
+
+   if (Redmine::VERSION::ARRAY[0..1] <=> [4, 1]) < 0 &&
+      linkable &&
+      linkable.back_links.any?
+
+   documents = linkable.backlink_by_type('Document')
+   issues = linkable.backlink_by_type('Issue')
+   journals = linkable.backlink_by_type('Journal')
+   messages = linkable.backlink_by_type('Message')
+   news = linkable.backlink_by_type('News')
+   wikis = linkable.backlink_by_type('WikiContent')
+%>
+
+<%= stylesheet_link_tag("backlink", plugin: "redmine_backlink") %>
+
+<div id="backlink">
+  <h3><%= l(:label_reference_source) %></h3>
+
+  <div>
+    <ul style="padding-left: 0em; list-style-type: none">
+      <li>
+        <%= render 'backlink/backlink_field', title: :label_document, links: documents, short: true %>
+      </li>
+      <li>
+        <%= render 'backlink/backlink_field', title: :label_issue, links: issues, sublinks: journals, short: true %>
+      </li>
+      <li>
+        <%= render 'backlink/backlink_field', title: :label_board, sublinks: messages, short: true %>
+      </li>
+      <li>
+        <%= render 'backlink/backlink_field', title: :label_news, links: news, short: true %>
+      </li>
+      <li>
+        <%= render 'backlink/backlink_field', title: :label_wiki, links: wikis, short: true %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    let content = document.getElementById('sidebar');
+    let backlink = document.getElementById('backlink');
+    content.appendChild(backlink);
+  });
+</script>
+
+<% end %> <!-- if -->
