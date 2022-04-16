@@ -44,6 +44,13 @@ module RedmineBacklink
 
         content = content.gsub(%r{\r\n(\>\s)+(.*?)\r\n}m, '')
 
+        case Setting.text_formatting
+        when 'textile'
+          content = content.gsub(%r{<pre>(.*?)</pre>}m, '')
+        when 'markdown', 'common_mark', 'commonmark'
+          content = content.gsub(%r{(~~~|```)(.*?)(~~~|```)}m, '')
+        end
+
         backlink_references(content) do |to_object|
           next unless to_object
 

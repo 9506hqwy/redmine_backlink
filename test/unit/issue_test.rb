@@ -108,6 +108,93 @@ class IssueTest < ActiveSupport::TestCase
     assert_empty l
   end
 
+  def test_save_issue_quoted
+    InnerLinkRelation.destroy_all
+
+    f = save_model do
+      f = Issue.new
+      f.author = users(:users_001)
+      f.project = projects(:projects_001)
+      f.tracker = trackers(:trackers_001)
+      f.subject = 'test'
+      f.description = "\r\n> #1 \r\n#2"
+      f.save!
+      f
+    end
+
+    l = get_relation(f)
+    assert_equal 1, l.length
+
+    t = issues(:issues_002)
+    assert l.any? { |r| r.to == t }
+  end
+
+  def test_save_issue_textile
+    Setting.text_formatting = 'textile'
+    InnerLinkRelation.destroy_all
+
+    f = save_model do
+      f = Issue.new
+      f.author = users(:users_001)
+      f.project = projects(:projects_001)
+      f.tracker = trackers(:trackers_001)
+      f.subject = 'test'
+      f.description = '<pre>#1</pre>#2'
+      f.save!
+      f
+    end
+
+    l = get_relation(f)
+    assert_equal 1, l.length
+
+    t = issues(:issues_002)
+    assert l.any? { |r| r.to == t }
+  end
+
+  def test_save_issue_markdown
+    Setting.text_formatting = 'markdown'
+    InnerLinkRelation.destroy_all
+
+    f = save_model do
+      f = Issue.new
+      f.author = users(:users_001)
+      f.project = projects(:projects_001)
+      f.tracker = trackers(:trackers_001)
+      f.subject = 'test'
+      f.description = '~~~#1~~~#2'
+      f.save!
+      f
+    end
+
+    l = get_relation(f)
+    assert_equal 1, l.length
+
+    t = issues(:issues_002)
+    assert l.any? { |r| r.to == t }
+  end
+
+  def test_save_issue_commonmark
+    Setting.text_formatting = 'common_mark'
+    InnerLinkRelation.destroy_all
+
+    f = save_model do
+      f = Issue.new
+      f.author = users(:users_001)
+      f.project = projects(:projects_001)
+      f.tracker = trackers(:trackers_001)
+      f.subject = 'test'
+      f.description = '```#1```#2'
+      f.save!
+      f
+    end
+
+    l = get_relation(f)
+    assert_equal 1, l.length
+
+    t = issues(:issues_002)
+    assert l.any? { |r| r.to == t }
+  end
+
   def test_save_issue_ref0
     InnerLinkRelation.destroy_all
 
