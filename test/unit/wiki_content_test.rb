@@ -3,7 +3,8 @@
 require File.expand_path('../../test_helper', __FILE__)
 
 class WikiContentTest < ActiveSupport::TestCase
-  fixtures :issues,
+  fixtures :enabled_modules,
+           :issues,
            :member_roles,
            :members,
            :projects,
@@ -11,6 +12,7 @@ class WikiContentTest < ActiveSupport::TestCase
            :users,
            :wiki_contents,
            :wiki_pages,
+           :wikis,
            :inner_link_relations
 
   def test_backlink_visible_true

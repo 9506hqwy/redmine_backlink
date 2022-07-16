@@ -3,12 +3,18 @@
 require File.expand_path('../../test_helper', __FILE__)
 
 class JournalTest < ActiveSupport::TestCase
-  fixtures :issues,
+  fixtures :enabled_modules,
+           :enumerations,
+           :issues,
+           :issue_categories,
+           :issue_statuses,
            :journals,
            :member_roles,
            :members,
            :projects,
+           :projects_trackers,
            :roles,
+           :trackers,
            :users,
            :inner_link_relations
 

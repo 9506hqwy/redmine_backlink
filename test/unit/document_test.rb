@@ -4,6 +4,9 @@ require File.expand_path('../../test_helper', __FILE__)
 
 class DocumentTest < ActiveSupport::TestCase
   fixtures :documents,
+           :enabled_modules,
+           :enumerations,
+           :issue_categories,
            :issues,
            :member_roles,
            :members,

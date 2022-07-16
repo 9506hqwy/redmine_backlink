@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 # Load the Redmine helper
-require 'test_after_commit' if ActiveRecord::VERSION::MAJOR < 5
 require File.expand_path(File.dirname(__FILE__) + '/../../../test/test_helper')
+require 'test_after_commit' if ActiveRecord::VERSION::MAJOR < 5
 ActiveRecord::FixtureSet.create_fixtures(
   File.expand_path('../fixtures', __FILE__),
   [
