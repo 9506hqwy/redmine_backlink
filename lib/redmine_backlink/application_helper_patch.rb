@@ -102,4 +102,10 @@ module RedmineBacklink
   end
 end
 
-ApplicationHelper.prepend RedmineBacklink::ApplicationHelperPatch
+Rails.application.config.after_initialize do
+  DocumentsController.send(:helper, RedmineBacklink::ApplicationHelperPatch)
+  IssuesController.send(:helper, RedmineBacklink::ApplicationHelperPatch)
+  MessagesController.send(:helper, RedmineBacklink::ApplicationHelperPatch)
+  NewsController.send(:helper, RedmineBacklink::ApplicationHelperPatch)
+  WikiController.send(:helper, RedmineBacklink::ApplicationHelperPatch)
+end
