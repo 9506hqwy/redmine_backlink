@@ -72,6 +72,12 @@
       linkable = @content
    end
 
+   if (Redmine::VERSION::ARRAY[0..1] <=> [5, 0]) < 0 &&
+      linkable &&
+      linkable.is_a?(WikiContent::Version)
+      linkable = linkable.page.content
+   end
+
    if (Redmine::VERSION::ARRAY[0..1] <=> [4, 1]) < 0 &&
       linkable &&
       linkable.back_links.any?
