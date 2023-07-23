@@ -117,13 +117,13 @@ module RedmineBacklink
       end
 
       def backlink_visible?(user=User.current)
-        return visible?(user) if respond_to?(:visible?)
-
         if self.instance_of?(Journal)
           return false unless issue.visible?(user)
 
           return !private_notes? || user.allowed_to?(:view_private_notes, project)
         end
+
+        return visible?(user) if respond_to?(:visible?)
 
         true
       end
