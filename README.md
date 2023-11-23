@@ -42,6 +42,7 @@ The backlink is on side bar in issue and wiki page, and on page bottom in other 
   * 4.1
   * 4.2
   * 5.0
+  * 5.1
 * Database
   * SQLite
   * MySQL 5.7
