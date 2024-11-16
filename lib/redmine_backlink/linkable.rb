@@ -160,4 +160,8 @@ module RedmineBacklink
   end
 end
 
-ActiveRecord::Base.include RedmineBacklink::Linkable
+if defined?(ApplicationRecord)
+  ApplicationRecord.include RedmineBacklink::Linkable
+else
+  ActiveRecord::Base.include RedmineBacklink::Linkable
+end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class InnerLinkRelation < ActiveRecord::Base
+class InnerLinkRelation < RedmineBacklink::Utils::ModelBase
   belongs_to :from, polymorphic: true
   belongs_to :to, polymorphic: true
 
