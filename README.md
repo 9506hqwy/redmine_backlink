@@ -42,13 +42,11 @@ The backlink is on side bar in issue and wiki page, and on page bottom in other 
 ## Tested Environment
 
 - Redmine (Docker Image)
-  - 4.0
-  - 4.1
-  - 4.2
   - 5.0
   - 5.1
   - 6.0
   - 6.1
+  - 7.0
 - Database
   - SQLite
   - MySQL 5.7 or 8.0
