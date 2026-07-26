@@ -23,7 +23,7 @@ Redmine::Plugin.register :redmine_backlink do
   name 'Redmine Backlink plugin'
   author '9506hqwy'
   description 'This is a back link plugin for Redmine'
-  version '0.1.0'
+  version '0.2.0'
   url 'https://github.com/9506hqwy/redmine_backlink'
   author_url 'https://github.com/9506hqwy'
 end
